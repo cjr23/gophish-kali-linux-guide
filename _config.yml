@@ -1,0 +1,23 @@
+# Configuration GitHub Pages — référencement Google (SEO)
+title: "Installer GoPhish sur Kali Linux en laboratoire isolé — revue scientifique"
+description: "Guide scientifique et protocole reproductible pour installer GoPhish sur Kali Linux en environnement isolé, à des fins de sensibilisation défensive au phishing (hameçonnage)."
+lang: fr
+locale: fr_FR
+author:
+  name: Christian Gilbert Fodé Diouf
+  url: https://personal-portfolio-bay-one-49.vercel.app/
+url: "https://cjr23.github.io"
+baseurl: "/gophish-kali-linux-guide"
+
+theme: jekyll-theme-cayman
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Après avoir ajouté le site dans Google Search Console (méthode « Balise HTML »),
+# colle ici uniquement le code de vérification, puis retire le « # » :
+# google_site_verification: "COLLE_TON_CODE_ICI"
+
+exclude:
+  - LICENSE

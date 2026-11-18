@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cjr23.github.io/gophish-kali-linux-guide/sitemap.xml
