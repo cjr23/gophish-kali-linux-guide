@@ -727,7 +727,12 @@ img, svg { max-width: 100%; }
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 @media print {
-  @page { size: A4; margin: 16mm 15mm 18mm; }
+  @page {
+    size: A4;
+    margin: 16mm 15mm 18mm;
+    @bottom-left { content: "Christian Gilbert Fodé Diouf · 2026"; font: 7.5pt "Inter", sans-serif; color: #8A94A3; }
+    @bottom-right { content: counter(page) " / " counter(pages); font: 7.5pt "Inter", sans-serif; color: #8A94A3; }
+  }
   :root, :root[data-theme="dark"], :root:not([data-theme="light"]) {
     --bg: #fff; --surface: #fff; --surface-2: #F3F5F8;
     --border: #DCE2EA; --border-strong: #C5CEDA;
@@ -756,9 +761,11 @@ img, svg { max-width: 100%; }
   .abstract > p:first-of-type::first-letter { float: none; font-size: inherit; line-height: inherit; margin: 0; font-weight: inherit; }
   .keywords { margin-top: 4mm; }
   .prose { max-width: none; padding: 0; }
-  .prose h2 { font-size: 15pt; break-after: avoid; }
-  .prose h3 { break-after: avoid; }
-  .prose hr { margin: 7mm 0; }
+  .prose h2 { font-size: 15pt; margin-top: 9mm; break-inside: avoid; break-after: avoid; }
+  .prose > h2:first-child { margin-top: 0; }
+  .sec-num { break-after: avoid; }
+  .prose h3 { break-inside: avoid; break-after: avoid; }
+  .prose hr { display: none; }
   .prose div.highlighter-rouge, .table-wrap, .prose blockquote { break-inside: avoid; box-shadow: none; }
   .prose pre { white-space: pre-wrap; color: var(--code-text); }
   .highlight span { color: var(--code-text) !important; font-style: normal !important; }
