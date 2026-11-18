@@ -1,43 +1,66 @@
+{%- assign base = site.url | append: site.baseurl -%}
+{%- assign url_fr = base | append: '/' -%}
+{%- assign url_en = base | append: '/en/' -%}
+{%- if lang == 'en' -%}{%- assign page_url = url_en -%}{%- else -%}{%- assign page_url = url_fr -%}{%- endif -%}
+<!-- Versions linguistiques -->
+<link rel="alternate" hreflang="fr" href="{{ url_fr }}">
+<link rel="alternate" hreflang="en" href="{{ url_en }}">
+<link rel="alternate" hreflang="x-default" href="{{ url_fr }}">
 <!-- Métadonnées bibliographiques (Google Scholar / Highwire Press, Dublin Core, Schema.org) -->
-<meta name="citation_title" content="Déploiement et évaluation d'une plateforme GoPhish en environnement de laboratoire isolé sous Kali Linux : revue méthodologique pour la sensibilisation défensive au hameçonnage">
+<meta name="citation_title" content="{{ t.full_title | escape }}">
 <meta name="citation_author" content="Diouf, Christian Gilbert Fodé">
 <meta name="citation_author_institution" content="Teranga Academy, Dakar, Sénégal">
 <meta name="citation_publication_date" content="2026/11/18">
 <meta name="citation_online_date" content="2026/11/18">
 <meta name="citation_technical_report_institution" content="Teranga Academy">
-<meta name="citation_technical_report_number" content="Version 2.0">
-<meta name="citation_language" content="fr">
-<meta name="citation_keywords" content="GoPhish; Kali Linux; phishing; hameçonnage; ingénierie sociale; sensibilisation à la sécurité; cybersécurité défensive; laboratoire isolé; reproductibilité">
-<meta name="citation_abstract_html_url" content="{{ site.url }}{{ site.baseurl }}/">
-<meta name="citation_pdf_url" content="{{ site.url }}{{ site.baseurl }}/Revue_GoPhish_Kali_Linux_Christian_Gilbert_Fode_Diouf.pdf">
-<meta name="DC.title" content="Déploiement et évaluation d'une plateforme GoPhish en environnement de laboratoire isolé sous Kali Linux">
+<meta name="citation_technical_report_number" content="Version {{ paper.version }}">
+<meta name="citation_language" content="{{ lang }}">
+<meta name="citation_keywords" content="{{ t.keywords | escape }}">
+<meta name="citation_abstract_html_url" content="{{ page_url }}">
+<meta name="citation_pdf_url" content="{{ base }}{{ t.pdf }}">
+<meta name="DC.title" content="{{ t.full_title | escape }}">
 <meta name="DC.creator" content="Diouf, Christian Gilbert Fodé">
 <meta name="DC.date" content="2026-11-18">
-<meta name="DC.language" content="fr">
+<meta name="DC.language" content="{{ lang }}">
 <meta name="DC.rights" content="CC BY 4.0">
 <meta name="DC.type" content="Text">
+{%- if lang == 'en' %}
+<meta name="keywords" content="install GoPhish Kali Linux, GoPhish tutorial, GoPhish lab, phishing simulation, phishing awareness, security awareness training, Kali Linux VirtualBox, cybersecurity">
+{%- else %}
 <meta name="keywords" content="installer GoPhish Kali Linux, GoPhish tutoriel, GoPhish Kali, phishing laboratoire, simulation de phishing, sensibilisation au phishing, hameçonnage, cybersécurité, Kali Linux VirtualBox">
+{%- endif %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
-  "headline": "Déploiement et évaluation d'une plateforme GoPhish en environnement de laboratoire isolé sous Kali Linux",
-  "alternativeHeadline": "Revue méthodologique pour la sensibilisation défensive au hameçonnage",
+  "@id": "{{ page_url }}#article",
+  "headline": {{ t.title | jsonify }},
+  "alternativeHeadline": {{ t.subtitle | jsonify }},
+  "name": {{ t.full_title | jsonify }},
+  "description": {{ t.description | jsonify }},
   "author": {
     "@type": "Person",
     "name": "Christian Gilbert Fodé Diouf",
+    "image": "{{ base }}{{ paper.photo }}",
+    "jobTitle": {{ t.affiliation | jsonify }},
     "affiliation": { "@type": "Organization", "name": "Teranga Academy" },
-    "sameAs": ["https://github.com/cjr23", "https://personal-portfolio-bay-one-49.vercel.app/"]
+    "sameAs": ["{{ paper.github }}", "{{ paper.portfolio }}"]
   },
+  "image": "{{ base }}{{ paper.photo }}",
   "datePublished": "2026-11-18",
-  "version": "2.0",
-  "inLanguage": "fr",
-  "keywords": "GoPhish, Kali Linux, phishing, hameçonnage, ingénierie sociale, sensibilisation à la sécurité, cybersécurité défensive",
-  "license": "https://creativecommons.org/licenses/by/4.0/",
-  "url": "{{ site.url }}{{ site.baseurl }}/",
+  "version": "{{ paper.version }}",
+  "inLanguage": "{{ lang }}",
+  "keywords": {{ t.keywords | jsonify }},
+  "license": "{{ paper.license_url }}",
+  "url": "{{ page_url }}",
+{%- if lang == 'en' %}
+  "translationOfWork": { "@id": "{{ url_fr }}#article" },
+{%- else %}
+  "workTranslation": { "@id": "{{ url_en }}#article" },
+{%- endif %}
   "encoding": {
     "@type": "MediaObject",
-    "contentUrl": "{{ site.url }}{{ site.baseurl }}/Revue_GoPhish_Kali_Linux_Christian_Gilbert_Fode_Diouf.pdf",
+    "contentUrl": "{{ base }}{{ t.pdf }}",
     "encodingFormat": "application/pdf"
   }
 }

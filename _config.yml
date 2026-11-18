@@ -9,20 +9,31 @@ author:
 url: "https://cjr23.github.io"
 baseurl: "/gophish-kali-linux-guide"
 
-# En-tête de l'article affiché sur le site
+# Informations communes aux deux langues
+# (les textes traduits sont dans _data/i18n.json)
 paper:
-  kicker: "Revue méthodologique"
-  title: "Déploiement et évaluation d'une plateforme GoPhish en environnement de laboratoire isolé sous Kali Linux"
-  subtitle: "revue méthodologique pour la sensibilisation défensive au hameçonnage"
   author: "Christian Gilbert Fodé Diouf"
-  initials: "CD"
-  affiliation: "Développeur full-stack — Fondateur de Teranga Academy, Dakar, Sénégal"
+  short_name: "Christian G. F. Diouf"
   version: "2.0"
-  date: "Novembre 2026"
-  pdf: "/Revue_GoPhish_Kali_Linux_Christian_Gilbert_Fode_Diouf.pdf"
+  photo: "/assets/img/christian-diouf.jpg"
+  avatar: "/assets/img/christian-diouf-avatar.jpg"
+  email: "christiandiouf23@gmail.com"
+  github: "https://github.com/cjr23"
+  portfolio: "https://personal-portfolio-bay-one-49.vercel.app/"
   repo: "https://github.com/cjr23/gophish-kali-linux-guide"
   license: "CC BY 4.0"
-  license_url: "https://creativecommons.org/licenses/by/4.0/deed.fr"
+  license_url: "https://creativecommons.org/licenses/by/4.0/"
+
+# Version anglaise : README.en.md est publiée à l'adresse /en/
+defaults:
+  - scope:
+      path: "README.en.md"
+    values:
+      layout: default
+      permalink: /en/
+      lang: en
+      locale: en_US
+      description: "A reproducible protocol for installing GoPhish on Kali Linux in an isolated lab, written for defensive phishing awareness training."
 
 plugins:
   - jekyll-seo-tag

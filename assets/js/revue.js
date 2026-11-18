@@ -5,6 +5,11 @@
   var root = document.documentElement;
   var prose = document.querySelector('.prose');
   var abstract = document.querySelector('.abstract');
+  var LANG = (root.getAttribute('lang') || 'fr').slice(0, 2) === 'en' ? 'en' : 'fr';
+  var T = {
+    fr: { copy: 'Copier', copied: 'Copié', copyAria: 'Copier le code', keywords: 'Mots-clés', terminal: 'Terminal', output: 'Sortie' },
+    en: { copy: 'Copy', copied: 'Copied', copyAria: 'Copy the code', keywords: 'Keywords', terminal: 'Terminal', output: 'Output' }
+  }[LANG];
 
   /* ---------- Thème clair / sombre ---------- */
   var toggle = document.querySelector('[data-theme-toggle]');
@@ -25,7 +30,7 @@
   if (abstract) {
     Array.prototype.forEach.call(abstract.querySelectorAll('p'), function (p) {
       var label = p.querySelector('strong');
-      if (!label || !/^Mots-cl/i.test(label.textContent)) return;
+      if (!label || !/^(Mots-cl|Keywords)/i.test(label.textContent)) return;
       var text = p.textContent.replace(label.textContent, '').replace(/^\s*:?\s*/, '');
       var words = text.split(';').map(function (w) { return w.trim().replace(/\.$/, ''); }).filter(Boolean);
       if (!words.length) return;
@@ -33,7 +38,7 @@
       box.className = 'keywords';
       var head = document.createElement('span');
       head.className = 'keywords__label';
-      head.textContent = 'Mots-clés';
+      head.textContent = T.keywords;
       box.appendChild(head);
       words.forEach(function (w) {
         var chip = document.createElement('span');
@@ -74,6 +79,9 @@
   Array.prototype.forEach.call(prose.querySelectorAll('h3'), function (h) {
     splitNumber(h, /^\s*(\d+\.\d+)\s+(.+)$/, 'sub-num', false);
   });
+  var authorTitle = document.querySelector('.author-card h2[id]');
+  var authorLabel = document.querySelector('.author-card__eyebrow');
+  if (authorTitle) sections.push({ el: authorTitle, num: '', label: authorLabel ? authorLabel.textContent : authorTitle.textContent });
 
   /* ---------- Sommaire ---------- */
   var tocList = document.getElementById('toc-list');
@@ -117,7 +125,7 @@
   });
 
   /* ---------- Blocs de code : barre + copie ---------- */
-  var LABELS = { bash: 'Terminal', shell: 'Terminal', json: 'JSON', plaintext: 'Sortie', text: 'Sortie', bibtex: 'BibTeX' };
+  var LABELS = { bash: T.terminal, shell: T.terminal, json: 'JSON', plaintext: T.output, text: T.output, bibtex: 'BibTeX' };
   var ICON_COPY = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
   var ICON_DONE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>';
 
@@ -152,17 +160,17 @@
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'copy-btn';
-    btn.innerHTML = ICON_COPY + '<span>Copier</span>';
-    btn.setAttribute('aria-label', 'Copier le code');
+    btn.innerHTML = ICON_COPY + '<span>' + T.copy + '</span>';
+    btn.setAttribute('aria-label', T.copyAria);
     var timer;
     btn.addEventListener('click', function () {
       copyText(source).then(function () {
         btn.classList.add('is-done');
-        btn.innerHTML = ICON_DONE + '<span>Copié</span>';
+        btn.innerHTML = ICON_DONE + '<span>' + T.copied + '</span>';
         clearTimeout(timer);
         timer = setTimeout(function () {
           btn.classList.remove('is-done');
-          btn.innerHTML = ICON_COPY + '<span>Copier</span>';
+          btn.innerHTML = ICON_COPY + '<span>' + T.copy + '</span>';
         }, 1800);
       }, function () { /* copie refusée : on laisse le bouton tel quel */ });
     });

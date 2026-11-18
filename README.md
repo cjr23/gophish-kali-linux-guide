@@ -1,18 +1,18 @@
 # Déploiement et évaluation d'une plateforme GoPhish en environnement de laboratoire isolé sous Kali Linux : revue méthodologique pour la sensibilisation défensive au hameçonnage
 
 **Christian Gilbert Fodé Diouf**
-Développeur full-stack — Fondateur de Teranga Academy, Dakar, Sénégal
+Développeur full-stack, fondateur de Teranga Academy, Dakar, Sénégal
 Contact : christiandiouf23@gmail.com · GitHub : [github.com/cjr23](https://github.com/cjr23)
 
-**Version 2.0 — Novembre 2026**
+**Version 2.0, novembre 2026**
 
-[Version PDF](Revue_GoPhish_Kali_Linux_Christian_Gilbert_Fode_Diouf.pdf) · [Version en ligne](https://cjr23.github.io/gophish-kali-linux-guide/) · [Comment citer](#comment-citer-ce-travail) · Licence [CC BY 4.0](LICENSE)
+[English version](README.en.md) · [Version PDF](Revue_GoPhish_Kali_Linux_Christian_Gilbert_Fode_Diouf.pdf) · [Version en ligne](https://cjr23.github.io/gophish-kali-linux-guide/) · [Comment citer](#comment-citer-ce-travail) · Licence [CC BY 4.0](LICENSE)
 
 ---
 
 ## Résumé
 
-Le hameçonnage (*phishing*) demeure l'un des vecteurs d'attaque les plus répandus et les plus coûteux des systèmes d'information contemporains, exploitant non pas une vulnérabilité logicielle mais le facteur humain. La sensibilisation des utilisateurs, appuyée sur des simulations contrôlées, constitue une contre-mesure reconnue. Cet article propose une revue méthodologique et un protocole reproductible pour le déploiement de **GoPhish**, un cadriciel open source de simulation de campagnes de hameçonnage, dans un **environnement de laboratoire strictement isolé** sous Kali Linux virtualisé. Nous décrivons l'architecture expérimentale, la procédure d'installation et de durcissement (restriction de l'écoute réseau à l'interface de bouclage), la méthode de vérification du bon fonctionnement, ainsi qu'un protocole d'évaluation des acquis. L'étude met l'accent sur le **cadre éthique et légal** qui conditionne toute utilisation de tels outils : isolation, autorisation explicite, données fictives et non-collecte de secrets réels. Les résultats montrent qu'un tel environnement peut être établi de manière fiable et pédagogiquement exploitable sans aucune exposition au réseau de production. Nous concluons que la valeur d'un exercice de simulation se mesure à la progression des connaissances des participants, et non à la capture de leurs identifiants.
+Le hameçonnage (*phishing*) demeure l'un des vecteurs d'attaque les plus répandus et les plus coûteux des systèmes d'information contemporains, exploitant non pas une vulnérabilité logicielle mais le facteur humain. La sensibilisation des utilisateurs, appuyée sur des simulations contrôlées, constitue une contre-mesure reconnue. Cet article propose une revue méthodologique et un protocole reproductible pour le déploiement de GoPhish, un cadriciel open source de simulation de campagnes de hameçonnage, dans un environnement de laboratoire strictement isolé sous Kali Linux virtualisé. Nous décrivons l'architecture expérimentale, la procédure d'installation et de durcissement (restriction de l'écoute réseau à l'interface de bouclage), la méthode de vérification du bon fonctionnement, ainsi qu'un protocole d'évaluation des acquis. L'étude met l'accent sur le cadre éthique et légal qui conditionne toute utilisation de tels outils : isolation, autorisation explicite, données fictives et non-collecte de secrets réels. Les résultats montrent qu'un tel environnement peut être établi de manière fiable et pédagogiquement exploitable sans aucune exposition au réseau de production. Nous concluons que la valeur d'un exercice de simulation se mesure à la progression des connaissances des participants, et non à la capture de leurs identifiants.
 
 **Mots-clés :** hameçonnage ; ingénierie sociale ; sensibilisation à la sécurité ; GoPhish ; Kali Linux ; laboratoire isolé ; cybersécurité défensive ; reproductibilité.
 
@@ -53,7 +53,7 @@ Cet article constitue une **revue méthodologique appliquée**. Il ne s'agit pas
 
 > **Règle essentielle.** Ce travail porte exclusivement sur une installation de laboratoire et une sensibilisation défensive. GoPhish ne doit jamais être employé pour tromper des personnes, collecter des identifiants ou émettre des messages sans **autorisation écrite** et **périmètre clairement défini**.
 
-Le respect des principes suivants est une condition de validité — scientifique autant que légale — de l'ensemble du protocole :
+Le respect des principes suivants est une condition de validité, scientifique autant que légale, de l'ensemble du protocole :
 
 | # | Principe | Justification |
 |---|----------|---------------|
@@ -87,8 +87,8 @@ L'environnement de référence repose sur Kali Linux exécuté dans VirtualBox, 
 
 ### 3.2 Matériel logiciel
 
-- **GoPhish** — cadriciel open source de simulation de campagnes, distribué sous forme d'archive binaire pour Linux ([dépôt officiel](https://github.com/gophish/gophish)).
-- **Utilitaires système** — `wget`, `unzip`, `curl`, ainsi que les outils standards d'inspection réseau (`ip`, `ss`).
+- GoPhish, cadriciel open source de simulation de campagnes, distribué sous forme d'archive binaire pour Linux ([dépôt officiel](https://github.com/gophish/gophish)).
+- Les utilitaires système `wget`, `unzip` et `curl`, ainsi que les outils standards d'inspection réseau (`ip`, `ss`).
 
 ### 3.3 Reproductibilité
 
@@ -216,7 +216,7 @@ L'interface présente plusieurs rubriques dont la présence et le libellé exact
 | Users & Groups | Gestion des utilisateurs de test et des groupes autorisés |
 | Email Templates | Gestion des modèles de messages employés dans les exercices |
 | Landing Pages | Pages de démonstration et d'apprentissage |
-| Sending Profiles | Paramètres techniques d'envoi — à ne pas utiliser pour contacter des tiers sans autorisation |
+| Sending Profiles | Paramètres techniques d'envoi, à ne jamais utiliser pour contacter des tiers sans autorisation |
 
 ### 5.2 Vérification du fonctionnement
 
@@ -300,11 +300,11 @@ Les perspectives incluent l'intégration d'une mesure longitudinale des taux de 
 
 ## Références
 
-1. GoPhish — Dépôt officiel du projet. <https://github.com/gophish/gophish>
-2. GoPhish — Versions publiées. <https://github.com/gophish/gophish/releases>
-3. GoPhish — Documentation du projet. <https://docs.getgophish.com/>
-4. Kali Linux — Documentation officielle. <https://www.kali.org/docs/>
-5. Oracle VM VirtualBox — Manuel utilisateur, chapitre « Network Address Translation (NAT) ». <https://www.virtualbox.org/manual/>
+1. GoPhish, dépôt officiel du projet. <https://github.com/gophish/gophish>
+2. GoPhish, versions publiées. <https://github.com/gophish/gophish/releases>
+3. GoPhish, documentation du projet. <https://docs.getgophish.com/>
+4. Kali Linux, documentation officielle. <https://www.kali.org/docs/>
+5. Oracle VM VirtualBox, manuel utilisateur, chapitre « Network Address Translation (NAT) ». <https://www.virtualbox.org/manual/>
 
 ---
 
