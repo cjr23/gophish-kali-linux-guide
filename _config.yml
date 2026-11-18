@@ -9,15 +9,29 @@ author:
 url: "https://cjr23.github.io"
 baseurl: "/gophish-kali-linux-guide"
 
-theme: jekyll-theme-cayman
+# En-tête de l'article affiché sur le site
+paper:
+  kicker: "Revue méthodologique"
+  title: "Déploiement et évaluation d'une plateforme GoPhish en environnement de laboratoire isolé sous Kali Linux"
+  subtitle: "revue méthodologique pour la sensibilisation défensive au hameçonnage"
+  author: "Christian Gilbert Fodé Diouf"
+  initials: "CD"
+  affiliation: "Développeur full-stack — Fondateur de Teranga Academy, Dakar, Sénégal"
+  version: "2.0"
+  date: "Novembre 2026"
+  pdf: "/Revue_GoPhish_Kali_Linux_Christian_Gilbert_Fode_Diouf.pdf"
+  repo: "https://github.com/cjr23/gophish-kali-linux-guide"
+  license: "CC BY 4.0"
+  license_url: "https://creativecommons.org/licenses/by/4.0/deed.fr"
 
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# Après avoir ajouté le site dans Google Search Console (méthode « Balise HTML »),
-# colle ici uniquement le code de vérification, puis retire le « # » :
+# Google Search Console (méthode « Balise HTML ») : colle ici uniquement
+# le code de vérification, puis retire le « # » :
 # google_site_verification: "COLLE_TON_CODE_ICI"
 
 exclude:
   - LICENSE
+  - CITATION.cff
